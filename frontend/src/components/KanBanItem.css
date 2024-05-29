@@ -3,5 +3,50 @@
     padding: 5px 10px;
     border: 1px solid white;
     border-radius: 10px;
-    background: rgba(255, 255, 255, 0.07)
+    background: rgba(255, 255, 255, 0.07);
+    font-size: 13px;
+}
+
+.KanBanItem__Input {
+    background: none;
+    border: none;
+    width: 100%;
+    color: white;
+    margin-top: 10px;
+}
+
+.KanBanItem__Input:focus {
+    outline: none;
+}
+
+.KanBanItem__Buttons {
+    margin-top: 5px;
+    display: flex;
+    justify-content: left;
+}
+
+.KanBanItem__Buttons > button {
+    height: 20px;
+    width: 20px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 11px;
+    border: 1px solid white;
+    color: white;
+    border-radius: 100%;
+    margin-right: 5px;
+}
+
+.KanBanItem__Button__cancel {
+    background: rgba(255, 88, 116, 0.5);
+}
+
+.KanBanItem__Button__move {
+    background: rgba(227, 209, 138, 0.5)
+}
+
+.KanBanItem__Button__confirm {
+    background: rgba(33, 199, 168, 0.5);
 }
