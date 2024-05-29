@@ -1,0 +1,52 @@
+.KanBanCard {
+    border: 2px solid white;
+    border-radius: 10px;
+}
+
+.KanBanCard__Header {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    font-weight: bold;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.col-blue {
+    background: rgba(130, 170, 255, 0.5);
+}
+
+.col-red {
+    background: rgba(255, 88, 116, 0.5);
+}
+
+.col-green {
+    background: rgba(33, 199, 168, 0.5);
+}
+
+.KanBanCard__Body {
+    padding: 0 30px 25px 30px;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.KanBanCard__Button {
+    color: white;
+    background: none;
+    border: 1px solid white;
+    border-radius: 100%;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.KanBanCard__Button:hover {
+    background: rgba(33, 199, 168, 0.7);
+    box-shadow: 0 0 10px rgba(33, 199, 168, 0.5);
+}
+
+.KanBanCard__Button:active {
+    background: rgba(33, 199, 168, 1);
+}

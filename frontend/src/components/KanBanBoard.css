@@ -1,0 +1,7 @@
+.KanBanBoard {
+    width: 100%;
+    padding: 50px 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 25px;
+}
