@@ -37,13 +37,13 @@ function App() {
     const [items, setItems] = useState(itemsFromAPI)
 
     const openItems = items.filter((item) => {return item.status === "OPEN"})
-        .map((item) => {return <KanBanItem key={item.id} kanBanItemProps={item}/>})
+        .map((item) => {return <KanBanItem key={item.id} kanBanItemProps={item} items={items} setItems={setItems}/>})
 
     const inProgressItems = items.filter((item) => {return item.status === "IN_PROGRESS"})
-        .map((item) => {return <KanBanItem key={item.id} kanBanItemProps={item}/>})
+        .map((item) => {return <KanBanItem key={item.id} kanBanItemProps={item} items={items} setItems={setItems}/>})
 
     const doneItems = items.filter((item) => {return item.status === "DONE"})
-        .map((item) => {return <KanBanItem key={item.id} kanBanItemProps={item}/>})
+        .map((item) => {return <KanBanItem key={item.id} kanBanItemProps={item} items={items} setItems={setItems}/>})
 
     return (
         <KanBanBoard>

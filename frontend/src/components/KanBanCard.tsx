@@ -3,6 +3,8 @@ import "./KanBanCard.css"
 import React, {ReactElement} from "react";
 import KanBanItem from "./KanBanItem.tsx";
 import {KanBanItemProps} from "../types/KanBanItemProps.tsx";
+import { v4 as uuidv4 } from 'uuid';
+
 
 export default function KanBanCard(
     {KanBanCardProps, children, items, setItems}: {
@@ -24,7 +26,7 @@ export default function KanBanCard(
     }
 
     const addNewItem = () => {
-        setItems([...items, {id: "", description: "", status: "OPEN", isForm: true}])
+        setItems([...items, {id: uuidv4(), description: "", status: "OPEN", isForm: true}])
     }
 
     return (
