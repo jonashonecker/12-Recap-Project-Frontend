@@ -87,30 +87,33 @@ export default function KanBanItemForm({kanBanItemProps, items, setItems}: {
             }
         }
 
-        setItems(
-            items.map((item) => {
-                if (item.id === kanBanItemProps.id) {
-                    return {...item, isForm: false, isUpdate: false, description: description, status: nextStatus}
-                } else {
-                    return item
-                }
+        axios.put("api/todo/" + kanBanItemProps.id, {...kanBanItemProps, status: nextStatus})
+            .then((response) => {
+                setItems(
+                    items.map((item) => {
+                        if (item.id === kanBanItemProps.id) {
+                            return {...item, isForm: false, isUpdate: false, description: description, status: response.data.status}
+                        } else {
+                            return item
+                        }
+                    })
+                )
             })
-        )
     }
 
     const createMoveButtons = () => {
         switch (kanBanItemProps.status) {
             case "OPEN":
-                return <button onClick={moveForm} name="moveForward" className="KanBanItem__Button__move">→</button>
+                return <button onClick={moveForm} name="moveForward" type="button" className="KanBanItem__Button__move">→</button>
             case "IN_PROGRESS":
                 return (
                     <>
-                        <button onClick={moveForm} name="moveBackward" className="KanBanItem__Button__move">←</button>
-                        <button onClick={moveForm} name="moveForward" className="KanBanItem__Button__move">→</button>
+                        <button onClick={moveForm} name="moveBackward" type="button" className="KanBanItem__Button__move">←</button>
+                        <button onClick={moveForm} name="moveForward" type="button" className="KanBanItem__Button__move">→</button>
                     </>
                 )
             case "DONE":
-                return <button onClick={moveForm} name="moveBackward" className="KanBanItem__Button__move">←</button>
+                return <button onClick={moveForm} name="moveBackward" type="button" className="KanBanItem__Button__move">←</button>
         }
     }
 
