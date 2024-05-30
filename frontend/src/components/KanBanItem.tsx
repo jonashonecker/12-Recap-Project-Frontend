@@ -14,41 +14,45 @@ export default function KanBanItem({kanBanItemProps, items, setItems}: {
         setDescription(event.target.value)
     }
 
-    const sendData = (event: React.FormEvent<HTMLFormElement>) => {
+    const submitFormData = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
-        const itemsWithoutForm =items
+        const itemsWithReplacedForm = items
             .map((item) => {
-                if(item.id !== event.currentTarget.id) {
-                    return item
-                } else {
+                if (item.id === event.currentTarget.id) {
                     return {...item, isForm: false, id: "SERVER_SET_THIS", description: description}
+                } else {
+                    return item
                 }
             })
-        setItems(itemsWithoutForm)
+        setItems(itemsWithReplacedForm)
     }
 
-
-    if (!kanBanItemProps.isForm) {
-        return (
-            <div className="KanBanItem" id={kanBanItemProps.id}>
-                <div className="KanBanItem__Body">
-                    {kanBanItemProps.description}
-                </div>
-            </div>
+    const removeForm = (event: React.MouseEvent<HTMLButtonElement>) => {
+        setItems(
+            items.filter((item) => {return item.id !== event.currentTarget.form?.id})
         )
-    } else {
+    }
+
+    if (kanBanItemProps.isForm) {
         return (
             <div className="KanBanItem">
                 <div className="KanBanItem__Body">
-                    <form id={kanBanItemProps.id} onSubmit={sendData}>
+                    <form id={kanBanItemProps.id} onSubmit={submitFormData}>
                         <div className="KanBanItem__Buttons">
-                            <button type="reset" className="KanBanItem__Button__cancel">{'\uFF38'}</button>
-                            <button className="KanBanItem__Button__move">→</button>
+                            <button type="reset" onClick={removeForm} className="KanBanItem__Button__cancel">{'\uFF38'}</button>
                             <button type="submit" className="KanBanItem__Button__confirm">✓</button>
                         </div>
                         <textarea onChange={updateDescription} className="KanBanItem__Input"
                                   placeholder="Click me to write!" value={description}/>
                     </form>
+                </div>
+            </div>
+        )
+    } else {
+        return (
+            <div className="KanBanItem" id={kanBanItemProps.id}>
+                <div className="KanBanItem__Body">
+                    {kanBanItemProps.description}
                 </div>
             </div>
         )
