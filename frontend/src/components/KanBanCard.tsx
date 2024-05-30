@@ -26,7 +26,7 @@ export default function KanBanCard(
     }
 
     const addNewItem = () => {
-        setItems([...items, {id: uuidv4(), description: "", status: "OPEN", isForm: true}])
+        setItems([...items, {id: uuidv4(), description: "", status: "OPEN", isForm: true, isUpdate: false}])
     }
 
     return (

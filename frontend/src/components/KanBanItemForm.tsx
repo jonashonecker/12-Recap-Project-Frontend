@@ -1,6 +1,7 @@
 import "./KanBanItem.css"
 import React, {useState} from "react";
 import {KanBanItemProps} from "../types/KanBanItemProps.tsx";
+import axios from "axios";
 
 export default function KanBanItemForm({kanBanItemProps, items, setItems}: {
     kanBanItemProps: KanBanItemProps,
@@ -16,15 +17,38 @@ export default function KanBanItemForm({kanBanItemProps, items, setItems}: {
 
     const submitFormData = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
-        const itemsWithReplacedForm = items
-            .map((item) => {
-                if (item.id === kanBanItemProps.id) {
+
+        if (kanBanItemProps.isUpdate) {
+            axios.put("api/todo/" + kanBanItemProps.id, {...kanBanItemProps, description: description})
+                .then(() => replaceFormItemWithNormalItem(kanBanItemProps.id))
+        } else {
+            axios.post("api/todo", {...kanBanItemProps, description: description})
+                .then((response) => replaceFormItemWithNormalItemAndChangeId(kanBanItemProps.id, response.data.id))
+        }
+    }
+
+    const replaceFormItemWithNormalItem = (formId: string) => {
+        setItems(
+            items.map((item) => {
+                if (item.id === formId) {
                     return {...item, isForm: false, isUpdate: false, description: description}
                 } else {
                     return item
                 }
             })
-        setItems(itemsWithReplacedForm)
+        )
+    }
+
+    const replaceFormItemWithNormalItemAndChangeId = (formId: string, newId: string) => {
+        setItems(
+            items.map((item) => {
+                if (item.id === formId) {
+                    return {...item, id: newId, isForm: false, isUpdate: false, description: description}
+                } else {
+                    return item
+                }
+            })
+        )
     }
 
     const removeForm = () => {
