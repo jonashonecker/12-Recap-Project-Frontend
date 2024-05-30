@@ -3,4 +3,5 @@ export type KanBanItemProps = {
     description: string
     status: "OPEN" | "IN_PROGRESS" | "DONE"
     isForm?: boolean
+    isUpdate?: boolean
 }
