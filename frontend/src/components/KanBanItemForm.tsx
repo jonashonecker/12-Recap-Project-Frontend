@@ -52,6 +52,17 @@ export default function KanBanItemForm({kanBanItemProps, items, setItems}: {
     }
 
     const removeForm = () => {
+        if (kanBanItemProps.isUpdate) {
+            axios.delete("api/todo/" + kanBanItemProps.id).then(
+                () => {
+                    setItems(
+                        items.filter((item) => {
+                            return item.id !== kanBanItemProps.id
+                        })
+                    )
+                }
+            )
+        }
         setItems(
             items.filter((item) => {
                 return item.id !== kanBanItemProps.id
