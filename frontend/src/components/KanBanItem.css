@@ -50,3 +50,30 @@
 .KanBanItem__Button__confirm {
     background: rgba(33, 199, 168, 0.5);
 }
+
+.KanBanItem__Button__cancel:hover {
+    background: rgba(255, 88, 116, 0.8);
+}
+
+.KanBanItem__Button__move:hover {
+    background: rgba(227, 209, 138, 0.8)
+}
+
+.KanBanItem__Button__confirm:hover {
+    background: rgba(33, 199, 168, 0.8);
+}
+
+.KanBanItem__Button__cancel:active {
+    background: rgba(255, 88, 116, 1);
+    box-shadow: 0 0 10px rgba(255, 88, 116, 0.5);
+}
+
+.KanBanItem__Button__move:active {
+    background: rgba(227, 209, 138, 1);
+    box-shadow: 0 0 10px rgba(227, 209, 138, 0.5);
+}
+
+.KanBanItem__Button__confirm:active {
+    background: rgba(33, 199, 168, 1);
+    box-shadow: 0 0 10px rgba(33, 199, 168, 0.5);
+}
