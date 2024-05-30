@@ -29,7 +29,7 @@ export default function KanBanItem({kanBanItemProps, items, setItems}: {
         return (
             <div className="KanBanItem" id={kanBanItemProps.id} onClick={makeItemToFormUpdatable}>
                 <div className="KanBanItem__Body">
-                    {kanBanItemProps.description}
+                    {kanBanItemProps.status === "DONE" ? <s>{kanBanItemProps.description}</s> : kanBanItemProps.description}
                 </div>
             </div>
         )
